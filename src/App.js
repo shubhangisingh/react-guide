@@ -5,16 +5,25 @@ import './App.css';
 import Person from './Person/Person'
 
 class App extends Component {
+
+  state = {
+    persons: [
+    {name: 'MAX' ,age: '29'},
+    {name: 'Manu', age: '19'},
+    {name: 'Shubhi', age: '23'}
+    ]
+  }
   render() {
     return (
-      <div className="App">
+     <div className="App">
        <h1>
        Hi, I am a react app
        </h1>
        <p>This is working!!!</p>
-       <Person name= 'MAX' age= '29' />
-       <Person  name= 'Manu' age= '27' >My Hobies: Fighting</Person> 
-       <Person name= 'shubhi' age= '32' />
+       <button>Switch Name </button>
+       <Person name={this.state.persons[0].name} age= {this.state.persons[0].age} />
+        <Person name={this.state.persons[1].name} age= {this.state.persons[1].age} >My Hobies: Fighting</Person> 
+        <Person name={this.state.persons[2].name} age= {this.state.persons[2].age} />
       </div>
     );
    // return React.createElement('div', null,React.createElement('h1',{className: 'App'}, 'Hi, I\'m a React App!!!!') )
@@ -22,3 +31,4 @@ class App extends Component {
 }
 
 export default App;
+
