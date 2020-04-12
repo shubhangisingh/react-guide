@@ -12,7 +12,8 @@ class App extends Component {
     {name: 'Manu', age: '19'},
     {name: 'Shubhi', age: '23'}
     ],
-    title: "Hi, I am a react app !!!!!!!!!!" 
+    title: "Hi, I am a react app !!!!!!!!!!" ,
+    showPersons: false
   }
 
   switchNameHandler = (newName) => {
@@ -38,6 +39,12 @@ class App extends Component {
       ]
   })
   }
+  togglePersonsHandler = () => {
+    const doesShow = this.state.showPersons;
+    this.setState({
+      showPersons: !doesShow 
+    })
+  }
   render() {
     const mystyle= {
      backgroundColor: 'white',
@@ -45,7 +52,6 @@ class App extends Component {
      border: '1x solid blue',
      padding: '8px',
      cursor: 'pointer'
-
     };
 
     return (
@@ -54,13 +60,17 @@ class App extends Component {
        <p>This is working!!!</p>
        <button 
         style= {mystyle}
-        onClick= { () => this.switchNameHandler('pradeep')}>Switch Name </button>
-       <Person 
-         name={this.state.persons[0].name} age= {this.state.persons[0].age} />
-        <Person 
-         name={this.state.persons[1].name} age= {this.state.persons[1].age} click={this.switchNameHandler.bind(this,'Max!!!')}>My Hobies: Fighting</Person> 
-        <Person 
-         name={this.state.persons[2].name} age= {this.state.persons[2].age} changed= {this.nameChangedHandler}/>
+        onClick= {this.togglePersonsHandler}>Toggle Person </button>
+       { this.state.showPersons ? 
+             <div >
+                <Person 
+                  name={this.state.persons[0].name} age= {this.state.persons[0].age} />
+                 <Person 
+                  name={this.state.persons[1].name} age= {this.state.persons[1].age} click={this.switchNameHandler.bind(this,'Max!!!')}>My Hobies: Fighting</Person> 
+                 <Person 
+                  name={this.state.persons[2].name} age= {this.state.persons[2].age} changed= {this.nameChangedHandler}/>
+             </div>  : null
+        }
       </div>
     );
    // return React.createElement('div', null,React.createElement('h1',{className: 'App'}, 'Hi, I\'m a React App!!!!') )
