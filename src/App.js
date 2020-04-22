@@ -8,9 +8,9 @@ class App extends Component {
 
   state = {
     persons: [
-    {name: 'MAX' ,age: '29'},
-    {name: 'Manu', age: '19'},
-    {name: 'Shubhi', age: '23'}
+    { id:'1', name: 'MAX' ,age: '29'},
+    {id:'2', name: 'Manu', age: '19'},
+    {id:'3', name: 'Shubhi', age: '23'}
     ],
     title: "Hi, I am a react app !!!!!!!!!!" ,
     showPersons: false
@@ -40,7 +40,6 @@ class App extends Component {
      // create a copy array with elements of old array
     const persons =[...this.state.persons];
     // spread operator(...) -  ES method  to create a copy array with elements of old array
-    const persons =[...this.state.persons];
     persons.splice(personIndex,1)
     this.setState({
       persons: persons
@@ -63,7 +62,8 @@ class App extends Component {
                   return <Person 
                   click= {() => this.deletePersonHandler(index)}
                   name= {person.name}
-                  age= {person.age}/>
+                  age= {person.age}
+                  key= {person.id}/>
                 })}
               
           </div>  
