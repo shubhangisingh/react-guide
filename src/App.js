@@ -36,7 +36,11 @@ class App extends Component {
   }
 
   deletePersonHandler = (personIndex) => {
-    const persons= this.state.persons;
+    //const persons= this.state.persons.slice(); 
+     // create a copy array with elements of old array
+    const persons =[...this.state.persons];
+    // spread operator(...) -  ES method  to create a copy array with elements of old array
+    const persons =[...this.state.persons];
     persons.splice(personIndex,1)
     this.setState({
       persons: persons
